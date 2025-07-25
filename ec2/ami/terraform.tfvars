@@ -1,0 +1,6 @@
+region           = "ap-south-1"
+instance_type    = "t2.micro"
+ami_id           = "ami-0f58b397bc5c1f2e8"
+vpc_name         = "terra"
+subnet_name      = "terra-suba"
+# security_group_name  = "web-s"
