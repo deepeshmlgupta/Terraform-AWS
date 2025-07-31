@@ -43,10 +43,6 @@ variable "key_name" {
   type        = string
 }
 
-variable "public_key_path" {
-  description = "Path to the public key"
-  type        = string
-}
 
 variable "asg_min_size" {
   description = "Minimum size of Auto Scaling Group"
