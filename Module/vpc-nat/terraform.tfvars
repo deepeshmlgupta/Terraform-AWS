@@ -1,0 +1,10 @@
+region         = "ap-south-1"
+vpc_name           = "multi-tier-vpc"
+vpc_cidr           = "10.0.0.0/16"
+public_subnets     = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnets    = ["10.0.3.0/24", "10.0.4.0/24"]
+availability_zones = ["ap-south-1a", "ap-south-1b"]
+ami                = "ami-0f8ca728008ff5af4"
+instance_type      = "t3.micro"
+key_name           = "terra-key-ec2"
+# public_key_path    = "terra-key.pub"
