@@ -1,15 +1,20 @@
 variable "secret_name" {
-  description = "The name of the secret in Secrets Manager"
   type        = string
+  description = "Name of the secret"
 }
 
 variable "secret_description" {
-  description = "Description for the secret"
   type        = string
-  default     = "Managed by Terraform"
+  description = "Description for the secret"
 }
 
 variable "secret_kv_pairs" {
-  description = "Key-value pairs for the secret (e.g., username/password)"
   type        = map(string)
+  description = "Key-value pairs (e.g., username/password)"
+}
+
+variable "region" {
+  type = string
+  description = "using the region for creation of the secret's"
+  default = "ap-south-1"
 }

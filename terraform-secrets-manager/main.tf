@@ -1,25 +1,20 @@
-# Create a secret (optional, you can skip if it already exists in UI)
-resource "aws_secretsmanager_secret" "this" {
-  name        = var.secret_name
-  description = var.secret_description
+module "db_secret" {
+  source = "./module"
+
+  secret_name        = var.secret_name
+  secret_description = var.secret_description
+  secret_kv_pairs    = var.secret_kv_pairs
 }
 
-# Store the secret value (key-value JSON)
-resource "aws_secretsmanager_secret_version" "this" {
-  secret_id     = aws_secretsmanager_secret.this.id
-  secret_string = jsonencode(var.secret_kv_pairs)
-}
+# Example: use in RDS
+resource "aws_db_instance" "mydb" {
+  identifier        = "mydb"
+  engine            = "mysql"
+  instance_class    = "db.t3.micro"
+  allocated_storage = 20
 
-# Data source: Retrieve the latest version of the secret
-data "aws_secretsmanager_secret" "this" {
-  name = var.secret_name
-}
+  username = module.db_secret.db_username
+  password = module.db_secret.db_password
 
-data "aws_secretsmanager_secret_version" "this" {
-  secret_id = data.aws_secretsmanager_secret.this.id
-}
-
-# Decode secret JSON into map
-locals {
-  secret_data = jsondecode(data.aws_secretsmanager_secret_version.this.secret_string)
+  skip_final_snapshot = true
 }
