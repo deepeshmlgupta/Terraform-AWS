@@ -13,7 +13,7 @@ variable "secret_kv_pairs" {
   description = "Key-value pairs (e.g., username/password)"
 }
 
-variable "region" {
+variable "aws_region" {
   type = string
   description = "using the region for creation of the secret's"
   default = "ap-south-1"
