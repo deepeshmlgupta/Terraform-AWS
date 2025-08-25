@@ -1,15 +1,12 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "6.7.0"
+      source = "hashicorp/aws"
+      version = "6.3.0"
     }
-
-    region = var.region
   }
-
 }
 
-
-
-# terraform apply -var-file="dev.tfvars"
+provider "aws" {
+  region = var.aws_region
+}
