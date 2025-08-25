@@ -10,3 +10,5 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
+# terraform apply -var-file="dev.tfvars"
